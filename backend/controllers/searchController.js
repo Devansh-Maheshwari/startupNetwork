@@ -33,7 +33,7 @@ exports.searchInvestorsMentors = async (req, res) => {
       investorMentorData
     )}, recommend the best fit by name for their request.`;
 
-    // const result = await model.generateContent(prompt);
+    const result = await model.generateContent(prompt);
     console.log(result.response.text())
     const answer = result.response.text() || "No suitable recommendation found.";
 
