@@ -6,11 +6,12 @@ function App() {
   const [userEmail, setUserEmail] = useState(null);
   const [query, setQuery] = useState("");
   const [responseMessage, setResponseMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   
   const handleLoginSuccess = (response) => {
     const token = response.credential;
     axios
-      .post("http://localhost:5000/api/login", { token })
+      .post("https://startupnetwork.onrender.com/api/login", { token })
       .then((res) => {
         setUserEmail(res.data.email);
       })
@@ -20,19 +21,23 @@ function App() {
   const handleSearch = async () => {
     if (!query.trim()) return;
 
+    setLoading(true);
+    setResponseMessage("");
+
     try {
-      const response = await axios.post("http://localhost:5000/api/search", {
+      const response = await axios.post("https://startupnetwork.onrender.com/api/search", {
         query,
         userEmail,
       });
       setResponseMessage(response.data.message);
     } catch (error) {
-      console.log(error)
       if (error.response?.status === 403) {
         setResponseMessage("Your credits are exhausted. Please check your email to recharge.");
       } else {
         setResponseMessage("Error processing search request.");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,8 +69,10 @@ function App() {
               <div className="w-full flex justify-center">
                 <button
                   onClick={handleSearch}
-                  className="w-1/3 bg-blue-600 text-white px-4 py-2 rounded-md">
-                  Search
+                  disabled={loading}
+                  className={`w-1/3 px-4 py-2 rounded-md ${loading ? 'bg-gray-400' : 'bg-blue-600 text-white'}`}
+                >
+                  {loading ? "Searching..." : "Search"}
                 </button>
               </div>
 
