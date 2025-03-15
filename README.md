@@ -42,7 +42,7 @@ The **Startup Network Project** is a web platform that connects startups with in
 ## Setup Instructions
 ### **1. Clone the Repository**
 ```sh
-git clone https://github.com/yourusername/startup-network.git
+git clone https://github.com/Devansh-Maheshwari/startup-network.git
 cd startup-network
 ```
 
@@ -78,29 +78,19 @@ POST /auth/google - Google OAuth Login
 ### **Search API**
 ```http
 POST /search - Takes a query, sends it to Gemini/ChatGPT API along with investor/mentor data, and returns a response.
-```
 
-### **Credit System**
-```http
-GET /user/credits - Fetches user credits
-POST /user/deduct-credit - Deducts 1 credit per search
-POST /user/recharge - Handles email-based recharge detection via Gmail API
-```
 
 ## Usage Flow
 1. **Login** - Users log in using their Google account.
 2. **Search Query** - Users enter a query in the search box.
 3. **AI Matching** - The backend forwards the query + database to AI (Gemini/ChatGPT) for the best match.
 4. **Credit Deduction** - One credit is deducted per search.
-5. **Recharge System** - If credits reach 0, users must send an email to recharge (automatically detected by the Gmail API).
+5. **Recharge System** - If credits reach 0, users must send an email to recharge (automatically detected by the Gmail API) there is only one recharge available.
 
-## Future Enhancements
-- Implement a subscription model for premium users.
-- Add more categories and filters for better matching.
-- Enhance response accuracy using fine-tuned AI models.
+
 
 ## Contributors
-- **Your Name** - [GitHub](https://github.com/yourusername)
+- **Your Name** - [GitHub](https://github.com/Devansh-Maheshwari)
 
 ## License
 This project is licensed under the MIT License.
