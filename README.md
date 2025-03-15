@@ -78,7 +78,7 @@ POST /auth/google - Google OAuth Login
 ### **Search API**
 ```http
 POST /search - Takes a query, sends it to Gemini/ChatGPT API along with investor/mentor data, and returns a response.
-
+```
 
 ## Usage Flow
 1. **Login** - Users log in using their Google account.
